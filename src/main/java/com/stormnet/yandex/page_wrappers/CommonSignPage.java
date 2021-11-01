@@ -1,4 +1,4 @@
-package com.stormnet.yandex;
+package com.stormnet.yandex.page_wrappers;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

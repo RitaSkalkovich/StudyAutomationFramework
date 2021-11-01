@@ -1,5 +1,4 @@
 package com.stormnet.tests;
-
 import com.stormnet.listeners.CustomTestNgListener;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Allure;

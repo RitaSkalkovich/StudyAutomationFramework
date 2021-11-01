@@ -1,8 +1,8 @@
 package com.stormnet.tests.yandex_tests;
 import com.stormnet.tests.AbstractTest;
-import com.stormnet.yandex.CommonSignPage;
-import com.stormnet.yandex.PersonalMailPage;
-import com.stormnet.yandex.loginPage.LoginPage;
+import com.stormnet.yandex.page_wrappers.CommonSignPage;
+import com.stormnet.yandex.page_wrappers.PersonalMailPage;
+import com.stormnet.yandex.actions.LoginPageActions;
 import io.qameta.allure.Story;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,14 +19,14 @@ public class LoginTest extends AbstractTest {
         CommonSignPage commonSignPage = new CommonSignPage(driver);
         commonSignPage.getSignInButtonOpenForm().click();
 
-        LoginPage loginPage = new LoginPage(driver);
-        PersonalMailPage personalMailPage = loginPage.fillUserName("RitaSkal")
+        LoginPageActions loginPageActions = new LoginPageActions(driver);
+        PersonalMailPage personalMailPage = loginPageActions.fillUserName("RitaSkal")
                 .submitForm();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@data-t=\"field:input-passwd\"]")));
 
-        loginPage.fillPassword("ritaskal14")
+        loginPageActions.fillPassword("ritaskal14")
                 .submitForm();
         personalMailPage.waitUntilOpened();
         personalMailPage.writerButton();

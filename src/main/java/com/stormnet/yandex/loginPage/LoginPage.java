@@ -1,9 +1,8 @@
 package com.stormnet.yandex.loginPage;
-
-import com.stormnet.yandex.PersonalMailPage;
+import com.stormnet.yandex.hmtlElements.Button;
+import com.stormnet.yandex.hmtlElements.InputField;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 
 public class LoginPage {
@@ -18,31 +17,16 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    public WebElement getUserNameField() {
-        return driver.findElement(USERNAME_FIELD_LOCATOR);
+    public InputField getUserNameField() {
+        return new InputField(driver, USERNAME_FIELD_LOCATOR);
     }
 
-    public WebElement getPasswordsField() {
-        return driver.findElement(PASSWORD_FIELD_LOCATOR);
+    public InputField getPasswordsField() {
+       return new InputField(driver, PASSWORD_FIELD_LOCATOR);
     }
 
-    public WebElement getSignInButton() {
-        return driver.findElement(SIGN_IN_BUTTON_LOCATOR);
-    }
-
-    public LoginPage fillUserName(String userName) {
-        getUserNameField().sendKeys(userName);
-        return this;
-    }
-
-    public LoginPage fillPassword(String password) {
-        getPasswordsField().sendKeys(password);
-        return this;
-    }
-
-    public PersonalMailPage submitForm() {
-        getSignInButton().click();
-        return new PersonalMailPage(driver);
+    public Button getSignInButton() {
+        return new Button(driver, SIGN_IN_BUTTON_LOCATOR);
     }
 
 }
