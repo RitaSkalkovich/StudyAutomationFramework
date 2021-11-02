@@ -1,7 +1,7 @@
 package com.stormnet.yandex.page_wrappers;
+import com.stormnet.yandex.hmtlElements.Button;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
@@ -9,15 +9,15 @@ import java.time.Duration;
 public class PersonalMailPage {
     protected CommonSignPage commonSignPage;
     private WebDriver driver;
-    private static final By WRITE_BUTTON_LOCATOR = By.cssSelector(".mail-ComposeButton-Text");
+    private static final By WRITE_BUTTON_LOCATOR = By.xpath("//a[@href=\"#compose\"]");
 
     public PersonalMailPage(WebDriver driver) {
         this.commonSignPage = new CommonSignPage(driver);
         this.driver = driver;
     }
 
-    public WebElement clickWriteButton() {
-        return driver.findElement(WRITE_BUTTON_LOCATOR);
+    public Button clickWriteButton() {
+        return new Button(driver, WRITE_BUTTON_LOCATOR);
     }
 
     public PersonalMailPage writerButton() {
