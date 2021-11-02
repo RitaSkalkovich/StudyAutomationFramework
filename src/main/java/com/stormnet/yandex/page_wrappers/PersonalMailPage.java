@@ -26,7 +26,7 @@ public class PersonalMailPage {
     }
 
     public void waitUntilOpened() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.withMessage("Page was not opened")
                 .until(ExpectedConditions.visibilityOfElementLocated(WRITE_BUTTON_LOCATOR));
 

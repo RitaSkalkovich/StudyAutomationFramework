@@ -39,6 +39,8 @@ public class LoginTest extends AbstractTest {
         creatorMessageFormActions.chooseMailer();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@name=\"subject\"]")));
         creatorMessageFormActions.fillThemeField("dfdfd");
+        creatorMessageFormActions.clickAttachButton();
+
 
 
     }

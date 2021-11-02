@@ -26,4 +26,9 @@ public class CreatorMessageFormActions {
         return this;
     }
 
+    public CreatorMessageFormActions clickAttachButton() {
+        new CreatorMessageForm(driver).getAttachButton().click();
+        return this;
+    }
+
 }
