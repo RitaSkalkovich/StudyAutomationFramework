@@ -1,6 +1,6 @@
 package com.stormnet.yandex.actions;
 
-import com.stormnet.yandex.page_wrappers.CreatorMessage;
+import com.stormnet.yandex.page_wrappers.CreatorMessageForm;
 import org.openqa.selenium.WebDriver;
 
 public class CreatorMessageFormActions {
@@ -12,17 +12,17 @@ public class CreatorMessageFormActions {
     }
 
     public CreatorMessageFormActions clickToField() {
-        new CreatorMessage(driver).getToField().click();
+        new CreatorMessageForm(driver).getToField().click();
         return this;
     }
 
     public CreatorMessageFormActions chooseMailer() {
-        new CreatorMessage(driver).getChooseField().click();
+        new CreatorMessageForm(driver).getChooseField().click();
         return this;
     }
 
     public CreatorMessageFormActions fillThemeField(String theme) {
-        new CreatorMessage(driver).getThemeField().sendKeys(theme);
+        new CreatorMessageForm(driver).getThemeField().sendKeys(theme);
         return this;
     }
 

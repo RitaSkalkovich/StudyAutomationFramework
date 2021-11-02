@@ -4,13 +4,13 @@ import com.stormnet.yandex.hmtlElements.InputField;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CreatorMessage {
+public class CreatorMessageForm {
     private static final By TO_FIELD_LOCATOR = By.cssSelector(".ComposeRecipients-TopRow .composeYabbles");
     private static final By CHOOSE_MAILER_FIELD_LOCATOR = By.cssSelector(".ContactsSuggestItemDesktop");
     private static final By THEME_FIELD_LOCATOR = By.xpath("//input[@name=\"subject\"]");
     public final WebDriver driver;
 
-    public CreatorMessage(WebDriver driver) {
+    public CreatorMessageForm(WebDriver driver) {
         this.driver = driver;
     }
 
