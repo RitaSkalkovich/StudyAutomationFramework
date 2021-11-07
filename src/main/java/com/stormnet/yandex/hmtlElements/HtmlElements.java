@@ -14,7 +14,12 @@ public class HtmlElements {
         this.driver = driver;
     }
 
-    protected WebElement getElement() {
+    public WebElement getElement() {
         return driver.findElement(locator);
     }
+
+    public void sendKeys(CharSequence... keysToSend) {
+        getElement().sendKeys(keysToSend);
+    }
+
 }
