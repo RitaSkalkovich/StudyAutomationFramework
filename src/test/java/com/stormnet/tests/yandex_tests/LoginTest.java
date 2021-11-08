@@ -2,9 +2,9 @@ package com.stormnet.tests.yandex_tests;
 
 import com.stormnet.tests.AbstractTest;
 import com.stormnet.yandex.actions.CreatorMessageFormActions;
+import com.stormnet.yandex.actions.PersonalPageActions;
 import com.stormnet.yandex.page_wrappers.CommonSignPage;
 import com.stormnet.yandex.page_wrappers.DiskPage;
-import com.stormnet.yandex.page_wrappers.PersonalMailPage;
 import com.stormnet.yandex.actions.LoginPageActions;
 import io.qameta.allure.Story;
 import org.testng.annotations.Test;
@@ -27,9 +27,9 @@ public class LoginTest extends AbstractTest {
                 .fillPassword("skalrita")
                 .submitForm();
 
-        PersonalMailPage personalMailPage = new PersonalMailPage(driver);
-        personalMailPage.waitUntilOpened()
-                .writerButton();
+        PersonalPageActions personalPageActions = new PersonalPageActions(driver);
+        personalPageActions.waitUntilOpened()
+                .writeMessage();
 
         CreatorMessageFormActions creatorMessageFormActions = new CreatorMessageFormActions(driver);
         creatorMessageFormActions.waitUntilFindElementField()
@@ -39,13 +39,14 @@ public class LoginTest extends AbstractTest {
                 .waitUntilFindElementThemeField()
                 .fillThemeField("dfdfd")
                 .uploadFile()
+                .waitUntilLoadFile()
                 .waitUntilFindSendButton()
                 .sendMessage()
                 .waitUntilFindReturnButton()
                 .clickReturnButton();
         driver.navigate().refresh();
 
-        creatorMessageFormActions.waitUntilFindFirstMessage()
+        personalPageActions.waitUntilFindFirstMessage()
                 .chooseFirstMessage()
                 .waitUntilFindMoveToDisk()
                 .openPanelWithDiskButton()

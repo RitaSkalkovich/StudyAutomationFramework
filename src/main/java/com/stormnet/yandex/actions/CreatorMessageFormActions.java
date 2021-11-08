@@ -17,9 +17,6 @@ public class CreatorMessageFormActions {
     private static final By THEME_FIELD_LOCATOR = By.xpath("//input[@name=\"subject\"]");
     private static final By SEND_BUTTON_LOCATOR = By.cssSelector(".Button2_view_default");
     private static final By RETURN_TO_ALL_MESSAGE_BUTTON_LOCATOR = By.xpath("//div[@class=\"ComposeDoneScreen-Actions\"]/a");
-    private static final By CHECK_BOX_LOCATOR = By.cssSelector(".nb-checkbox");
-    private static final By PANEL_WITH_DISK_BUTTON_LOCATOR = By.cssSelector(".mail-File_type_doc");
-    private static final By OPEN_TO_DISK_BUTTON_LOCATOR = By.xpath("//a[@href=\"https://disk.yandex.ru\"]");
 
     public CreatorMessageFormActions(WebDriver driver) {
         this.driver = driver;
@@ -52,22 +49,8 @@ public class CreatorMessageFormActions {
         new CreatorMessageForm(driver).getReturnButton().click();
         return this;
     }
-    public CreatorMessageFormActions chooseFirstMessage() {
-        new CreatorMessageForm(driver).findCheckBox().clickCheckBox();
-        return this;
-    }
-    public CreatorMessageFormActions openPanelWithDiskButton() {
-        new CreatorMessageForm(driver).getPanelWithDiskButton().click();
-        return this;
-    }
-    public CreatorMessageFormActions moveFileToDisk() {
-        new CreatorMessageForm(driver).getDiskButtonToMove().click();
-        return this;
-    }
-    public CreatorMessageFormActions openDiskPage() {
-        new CreatorMessageForm(driver).getDiskButton().click();
-        return this;
-    }
+
+
     public CreatorMessageFormActions waitUntilFindElementField() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.withMessage("Element was found")
@@ -100,25 +83,12 @@ public class CreatorMessageFormActions {
                 .until(ExpectedConditions.visibilityOfElementLocated(RETURN_TO_ALL_MESSAGE_BUTTON_LOCATOR));
         return this;
     }
-
-    public CreatorMessageFormActions waitUntilFindFirstMessage() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.withMessage("CheckBox was found")
-                .until(ExpectedConditions.visibilityOfElementLocated(CHECK_BOX_LOCATOR));
-        return this;
-    }
-    public CreatorMessageFormActions waitUntilFindMoveToDisk() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
-        wait.withMessage("Send Button was found")
-                .until(ExpectedConditions.visibilityOfElementLocated(PANEL_WITH_DISK_BUTTON_LOCATOR));
+    public CreatorMessageFormActions waitUntilLoadFile(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
+        wait.withMessage("File was uploaded")
+                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(".Attachments__body--UhETx")));
         return this;
     }
 
-    public CreatorMessageFormActions waitUntilOpenDisk() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
-        wait.withMessage("Send Button was not found")
-                .until(ExpectedConditions.visibilityOfElementLocated(OPEN_TO_DISK_BUTTON_LOCATOR));
-        return this;
-    }
 
 }
