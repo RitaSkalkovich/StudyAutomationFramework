@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 
 public class CreatorMessageFormActions {
@@ -72,9 +73,11 @@ public class CreatorMessageFormActions {
         return this;
     }
     public CreatorMessageFormActions waitUntilFindSendButton() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
         wait.withMessage("Send Button was found")
                 .until(ExpectedConditions.visibilityOfElementLocated(SEND_BUTTON_LOCATOR));
+        driver.manage().timeouts().implicitlyWait(5000,
+                TimeUnit.MILLISECONDS);
         return this;
     }
     public CreatorMessageFormActions waitUntilFindReturnButton() {

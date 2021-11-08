@@ -27,8 +27,8 @@ public class DiskPage {
     }
 
     public DiskPage waitUntilOpenDownloadPage() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(4));
-        wait.withMessage("Download page was not found")
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.withMessage("Download page was found")
                 .until(ExpectedConditions.visibilityOfElementLocated(DOWNLOAD_BUTTON_LOCATOR));
         return this;
     }
