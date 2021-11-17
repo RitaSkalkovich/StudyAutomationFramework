@@ -1,43 +1,30 @@
 package com.stormnet.yandex.actions;
 
+import com.stormnet.yandex.waiter.Waiter;
 import com.stormnet.yandex.loginPage.LoginPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
-
+import io.qameta.allure.Step;
 public class LoginPageActions {
-    WebDriver driver;
-    private static final By PASSWORD_FIELD_LOCATOR = By.xpath("//input[@data-t=\"field:input-passwd\"]");
 
-    public LoginPageActions(WebDriver driver) {
-        this.driver = driver;
+
+    @Step("Login with creds")
+    public static void loginWithCreds(String userName, String password) {
+        LoginPageActions.fillUserName(userName);
+        LoginPageActions.submitForm();
+        Waiter.waitUntilOpenedPasswordFiled();
+        LoginPageActions.fillPassword(password);
+        LoginPageActions.submitForm();
     }
 
-    public LoginPageActions fillUserName(String userName) {
-        new LoginPage(driver).getUserNameField().sendKeys(userName);
-        return this;
+    public static void fillUserName(String userName) {
+        new LoginPage().getUserNameField().sendKeys(userName);
     }
 
-    public LoginPageActions fillPassword(String password) {
-        new LoginPage(driver).getPasswordsField().sendKeys(password);
-        return this;
+    public static void fillPassword(String password) {
+        new LoginPage().getPasswordsField().sendKeys(password);
     }
 
-    public LoginPageActions submitForm() {
-        new LoginPage(driver).getSignInButton().click();
-        return this;
+    public static void submitForm() {
+        new LoginPage().getSignInButton().click();
     }
-    public LoginPageActions waitUntilOpenedPasswordFiled() {
-        WebDriverWait waits = new WebDriverWait(driver, Duration.ofSeconds(3));
-        waits.withMessage("Password form was opened")
-                .until(ExpectedConditions.visibilityOfElementLocated(PASSWORD_FIELD_LOCATOR));
-        return this;
-
-    }
-
-
-
 
 }
