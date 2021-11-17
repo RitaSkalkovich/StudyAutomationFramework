@@ -9,7 +9,6 @@ import com.stormnet.yandex.actions.LoginPageActions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
 
 
 public class LoginTest extends AbstractTest {
