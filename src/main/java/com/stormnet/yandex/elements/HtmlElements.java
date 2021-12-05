@@ -21,5 +21,9 @@ public class HtmlElements {
         getElement().sendKeys(keysToSend);
     }
 
+    public By getLocator() {
+        return locator;
+    }
+
 
 }

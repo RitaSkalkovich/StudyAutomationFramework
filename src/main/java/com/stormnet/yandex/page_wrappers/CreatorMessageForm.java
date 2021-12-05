@@ -8,11 +8,11 @@ import org.openqa.selenium.By;
 
 public class CreatorMessageForm {
     private static final By ATTACH_BUTTON_LOCATOR = By.xpath("//input[@type='file']");
-    public static final By TO_FIELD_LOCATOR = By.cssSelector(".ComposeRecipients-TopRow .composeYabbles");
-    public static final By CHOOSE_MAILER_FIELD_LOCATOR = By.cssSelector(".ContactsSuggestItemDesktop");
-    public static final By THEME_FIELD_LOCATOR = By.xpath("//input[@name=\"subject\"]");
-    public static final By SEND_BUTTON_LOCATOR = By.cssSelector(".Button2_view_default");
-    public static final By RETURN_TO_ALL_MESSAGE_BUTTON_LOCATOR = By.xpath("//div[@class=\"ComposeDoneScreen-Actions\"]/a");
+    private static final By TO_FIELD_LOCATOR = By.cssSelector(".ComposeRecipients-TopRow .composeYabbles");
+    private static final By CHOOSE_MAILER_FIELD_LOCATOR = By.cssSelector(".ContactsSuggestItemDesktop");
+    private static final By THEME_FIELD_LOCATOR = By.xpath("//input[@name=\"subject\"]");
+    private static final By SEND_BUTTON_LOCATOR = By.cssSelector(".Button2_view_default");
+    private static final By RETURN_TO_ALL_MESSAGE_BUTTON_LOCATOR = By.xpath("//div[@class=\"ComposeDoneScreen-Actions\"]/a");
 
 
     public InputField getToField() {

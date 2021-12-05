@@ -8,11 +8,11 @@ import org.openqa.selenium.By;
 
 public class PersonalMailPage {
 
-    public static final By WRITE_BUTTON_LOCATOR = By.xpath("//a[@href=\"#compose\"]");
-    public static final By CHECK_BOX_LOCATOR = By.cssSelector(".nb-checkbox");
-    public static final By PANEL_WITH_DISK_BUTTON_LOCATOR = By.cssSelector(".mail-File_type_doc");
+    private static final By WRITE_BUTTON_LOCATOR = By.xpath("//a[@href=\"#compose\"]");
+    private static final By CHECK_BOX_LOCATOR = By.cssSelector(".nb-checkbox");
+    private static final By PANEL_WITH_DISK_BUTTON_LOCATOR = By.cssSelector(".mail-File_type_doc");
     private static final By MOVE_TO_DISK_BUTTON_LOCATOR = By.cssSelector(".js-show-save-popup");
-    public static final By OPEN_TO_DISK_BUTTON_LOCATOR = By.xpath("//a[@href=\"https://disk.yandex.ru\"]");
+    private static final By OPEN_TO_DISK_BUTTON_LOCATOR = By.xpath("//a[@href=\"https://disk.yandex.ru\"]");
 
 
     public Button clickWriteButton() {
@@ -29,6 +29,9 @@ public class PersonalMailPage {
     }
     public Button getDiskButton() {
         return new Button(OPEN_TO_DISK_BUTTON_LOCATOR);
+    }
+    public Button getWriteButton() {
+        return new Button(WRITE_BUTTON_LOCATOR);
     }
 
 

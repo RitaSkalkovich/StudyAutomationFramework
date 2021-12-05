@@ -39,16 +39,6 @@ public class FilesPage {
         return elementBasket;
 
     }
-//
-//    public static void dragAndDropNew(WebElement elementBasket, WebElement last) {
-//        Actions builder = new Actions(UiDriver.getDriver());
-//        Action dragAndDrop = builder.clickAndHold(last)
-//                .moveToElement(elementBasket)
-//                .release(elementBasket)
-//                .build();
-//        dragAndDrop.perform();
-//
-//    }
 
     public static void getFilePage() {
         WebDriverWait wait = new WebDriverWait(UiDriver.getDriver(), Duration.ofSeconds(3));

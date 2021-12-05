@@ -3,14 +3,16 @@ package com.stormnet.yandex.actions;
 import com.stormnet.yandex.waiter.Waiter;
 import com.stormnet.yandex.loginPage.LoginPage;
 import io.qameta.allure.Step;
+
 public class LoginPageActions {
 
 
     @Step("Login with creds")
+
     public static void loginWithCreds(String userName, String password) {
         LoginPageActions.fillUserName(userName);
         LoginPageActions.submitForm();
-        Waiter.waitUntilOpenedPasswordFiled();
+        Waiter.waitUntilVisible(new LoginPage().getPasswordsField(), "Password form was opened", Waiter.TIMEOUT.FIVE_SEC);
         LoginPageActions.fillPassword(password);
         LoginPageActions.submitForm();
     }

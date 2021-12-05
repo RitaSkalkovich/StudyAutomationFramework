@@ -1,11 +1,8 @@
 package com.stormnet.yandex.actions;
 
-import com.stormnet.yandex.page_wrappers.Files;
 import com.stormnet.yandex.waiter.Waiter;
 import com.stormnet.yandex.page_wrappers.CreatorMessageForm;
 import io.qameta.allure.Step;
-import java.io.File;
-import java.io.IOException;
 
 
 public class CreatorMessageFormActions {
@@ -14,18 +11,18 @@ public class CreatorMessageFormActions {
     }
 
     @Step("Fill required field for new message")
-    public static void writeNewLetterAndSend(){
-        Waiter.waitUntilFindElementField();
+    public static void writeNewLetterAndSend() {
+        Waiter.waitUntilVisible(new CreatorMessageForm().getToField(),"Element was found", Waiter.TIMEOUT.THREE_SEC);
         clickToField();
-        Waiter.waitUntilFindElementChooseMailer();
+        Waiter.waitUntilVisible(new CreatorMessageForm().getChooseField(), "Element was found", Waiter.TIMEOUT.THREE_SEC);
         chooseMailer();
-        Waiter.waitUntilFindElementThemeField();
+        Waiter.waitUntilVisible(new CreatorMessageForm().getThemeField(),"Element was found", Waiter.TIMEOUT.THREE_SEC);
         fillThemeField("theme");
         uploadFile();
         Waiter.waitUntilLoadFile();
-        Waiter.waitUntilFindSendButton();
+        Waiter.waitUntilVisible(new CreatorMessageForm().getSendButton(),"Send Button was found", Waiter.TIMEOUT.FIVE_SEC);
         sendMessage();
-        Waiter.waitUntilFindReturnButton();
+        Waiter.waitUntilVisible(new CreatorMessageForm().getReturnButton(),"find return button", Waiter.TIMEOUT.THREE_SEC);
         clickReturnButton();
 
     }
@@ -43,11 +40,13 @@ public class CreatorMessageFormActions {
         new CreatorMessageForm().getThemeField().sendKeys(theme);
     }
 
-    public static void uploadFile(){
-       
+
+    public static void uploadFile() {
+
         new CreatorMessageForm().findAttachButton().sendKeys("/Users/admin/Documents/3tasks.docx");
 
     }
+
     public static void sendMessage() {
         new CreatorMessageForm().getSendButton().click();
     }
@@ -55,7 +54,6 @@ public class CreatorMessageFormActions {
     public static void clickReturnButton() {
         new CreatorMessageForm().getReturnButton().click();
     }
-
 
 
 }

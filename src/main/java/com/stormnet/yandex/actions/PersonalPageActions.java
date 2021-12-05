@@ -10,18 +10,18 @@ public class PersonalPageActions {
 
     @Step("Open message creator")
     public static void openMessageForm() {
-        Waiter.waitUntilOpened();
+        Waiter.waitUntilVisible(new PersonalMailPage().getWriteButton(), "Page was opened", Waiter.TIMEOUT.SEVEN_SEC);
         PersonalPageActions.writeMessage();
     }
 
     @Step("Move file to yandex disk")
     public static void moveFileToYandexDisk() {
-        Waiter.waitUntilFindFirstMessage();
+        Waiter.waitUntilVisible(new PersonalMailPage().findCheckBox(),"CheckBox was found", Waiter.TIMEOUT.FIVE_SEC);
         PersonalPageActions.chooseFirstMessage();
-        Waiter.waitUntilFindMoveToDisk();
+        Waiter.waitUntilVisible(new PersonalMailPage().getPanelWithDiskButton(),"panel was opened", Waiter.TIMEOUT.SEVEN_SEC);
         PersonalPageActions.openPanelWithDiskButton();
         PersonalPageActions.moveFileToDisk();
-        Waiter.waitUntilOpenDisk();
+        Waiter.waitUntilVisible(new PersonalMailPage().getDiskButton(),"disk was opened", Waiter.TIMEOUT.SEVEN_SEC);
         PersonalPageActions.openDiskPage();
     }
 

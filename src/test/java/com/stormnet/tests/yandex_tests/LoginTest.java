@@ -9,20 +9,19 @@ import com.stormnet.yandex.actions.LoginPageActions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-
-
 public class LoginTest extends AbstractTest {
     @BeforeMethod
     public void openPage() {
         UiDriver.getDriver().get("https://mail.yandex.ru/");
     }
 
+
     @Test(testName = "Login with right credentials")
-    public void loginTestRightCredentials(){
+    public void loginTestRightCredentials() {
 
         CommonSignPage.openLoginForm();
 
-        LoginPageActions.loginWithCreds("skalRita14", "skalrita");
+        LoginPageActions.loginWithCreds("skalRita14", "skalNew");
 
         PersonalPageActions.openMessageForm();
 

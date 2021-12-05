@@ -1,5 +1,6 @@
 package com.stormnet.yandex.page_wrappers;
 
+import com.stormnet.yandex.elements.Button;
 import com.stormnet.yandex.waiter.Waiter;
 import com.stormnet.yandex.driver.UiDriver;
 import io.qameta.allure.Step;
@@ -15,7 +16,7 @@ public class DownloadPage {
     private static final By ALL_FILES_LIST_LOCATOR = By.cssSelector(".listing-item__icon-wrapper");
     private static final By MOVE_BUTTON_LOCATOR = By.xpath("(//span[@class='Menu-Text'])[6]");
     private static final By SUBMIT_BUTTON_LOCATOR = By.xpath("(//button[contains(@class,'confirmation-dialog__button_submit')])[1]");
-    public static final By LOADING_ELEMENT_LOCATOR = By.cssSelector(".operations-progress__text");
+    private static final By LOADING_ELEMENT_LOCATOR = By.cssSelector(".operations-progress__text");
 
 
     @Step("Choose last uploaded file")
@@ -27,12 +28,15 @@ public class DownloadPage {
     public static void moveAttachmentToFilePage() {
         DownloadPage.clickMoveButton();
         DownloadPage.sendToFile();
-        Waiter.waitUntilMoveEntityToFilePage();
+        Waiter.waitUntilInvisibleElement(new DownloadPage().getLoadingButton(), "download page was opened", Waiter.TIMEOUT.THREE_SEC);
     }
 
 
     public static WebElement getMoveButtonToFiles() {
         return UiDriver.getDriver().findElement(MOVE_BUTTON_LOCATOR);
+    }
+    public Button getLoadingButton() {
+        return new Button(LOADING_ELEMENT_LOCATOR);
     }
 
     public static void clickMoveButton() {
